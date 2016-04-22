@@ -1,0 +1,5 @@
+lan.conf
+log.txt
+__pycache__
+cache/*
+
