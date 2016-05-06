@@ -62,22 +62,25 @@ class Autoruns(object):
 
     def __init__(self, line):
         """Creates Autorun instance"""
-    #Time,Entry Location,Entry,Enabled,Category,Profile,Description,Signer,Company,Image Path,Version,Launch String
-        self.id = Autoruns.ID
-        Autoruns.ID += 1
-        s = line.split(',')
-        self.time = s[0]
-        self.location = s[1]
-        self.name = s[2]
-        self.status = s[3]
-        self.category = s[4]
-        self.profile = s[5]
-        self.desc = s[6]
-        self.signer = s[7]
-        self.company = s[8]
-        self.path = s[9]
-        self.ver = s[10]
-        self.launch = s[11]
+    #Time,Entry Location,Entry,Enabled,Category,Profile,Description,Signer,Company,Image Path,Version,Launch String
+        try:
+            self.id = Autoruns.ID
+            Autoruns.ID += 1
+            s = line.split(',')
+            self.time = s[0]
+            self.location = s[1]
+            self.name = s[2]
+            self.status = s[3]
+            self.category = s[4]
+            self.profile = s[5]
+            self.desc = s[6]
+            self.signer = s[7]
+            self.company = s[8]
+            self.path = s[9]
+            self.ver = s[10]
+            self.launch = s[11]
+        except:
+            print(line)
 
     def isEnabled(self):
         if self.status == 'enabled':
@@ -120,7 +123,8 @@ class LAN(object):
         #Validate!
         IPs = file2list(path)
         for IP in IPs:
-            self.PCs.append(PC(IP))
+            if IP[0]!='#':
+                self.PCs.append(PC(IP))
         return 
         
     def __str__(self):

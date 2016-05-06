@@ -2,4 +2,6 @@ lan.conf
 log.txt
 __pycache__
 cache/*
-
+tmp.txt
+online.txt
+1.txt
